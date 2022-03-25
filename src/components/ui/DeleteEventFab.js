@@ -7,7 +7,7 @@ export const DeleteEventFab = () => {
   const { activeEvent } = useSelector((state) => state.calendar);
 
   const handleDeleteEvent = () => {
-    dispatch(eventDeleted(activeEvent));
+    dispatch(eventDeleted());
   };
 
   return (
