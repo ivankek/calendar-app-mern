@@ -42,12 +42,12 @@
 }
 .login-form-1 .btnSubmit {
   color: #fff;
-  font-size: 0.5em;
+  font-size: 1em;
   background-color: #0062cc;
 }
 .login-form-2 .btnSubmit {
   background-color: #fff;
-  font-size: 0.5em;
+  font-size: 1em;
   color: #0062cc;
 }
 .login-form-2 .ForgetPwd {

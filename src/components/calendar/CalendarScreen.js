@@ -7,33 +7,45 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import "moment/locale/es";
 import { CalendarModal } from "./CalendarModal";
 import { CalendarEvent } from "./CalendarEvent";
+import { useDispatch, useSelector } from "react-redux";
+import { uiOpenModal } from "../../actions/ui";
+import { eventSetActive } from "../../actions/events";
+import { AddNewFab } from "../ui/AddNewFab";
+import { DeleteEventFab } from "../ui/DeleteEventFab";
 moment.locale("es");
 const localizer = momentLocalizer(moment); // or globalizeLocalizer
 
-const events = [
-  {
-    title: "Cumpleaños del jefe",
-    start: moment().toDate(),
-    end: moment().add(2, "hours").toDate(),
-    bgcolor: "#fafafa",
-    notes: "Comprar el pastel",
-    user: {
-      _id: "123",
-      name: "Fernando",
-    },
-  },
-];
+// const events = [
+//   {
+//     title: "Cumpleaños del jefe",
+//     start: moment().toDate(),
+//     end: moment().add(2, "hours").toDate(),
+//     bgcolor: "#fafafa",
+//     notes: "Comprar el pastel",
+//     user: {
+//       _id: "123",
+//       name: "Fernando",
+//     },
+//   },
+// ];
 
 export const CalendarScreen = () => {
   const [lastView, setLastView] = useState(
     localStorage.getItem("lastView") || "month"
   );
 
+  const dispatch = useDispatch();
+
+  const { events } = useSelector((state) => state.calendar);
+  const { activeEvent } = useSelector((state) => state.calendar);
+
+  const { modalOpen } = useSelector((state) => state.ui);
+
   const onDoubleClick = (e) => {
-    console.log(e);
+    dispatch(uiOpenModal());
   };
   const onSelectEvent = (e) => {
-    console.log(e);
+    dispatch(eventSetActive(e));
   };
 
   const onViewChange = (e) => {
@@ -72,6 +84,10 @@ export const CalendarScreen = () => {
         view={lastView}
         components={{ event: CalendarEvent }}
       />
+
+      <AddNewFab />
+
+      {activeEvent && <DeleteEventFab />}
 
       <CalendarModal />
     </div>
