@@ -70,6 +70,7 @@ body {
 
 .fab {
   border-radius: 100%;
+  cursor: pointer;
   bottom: 25px;
   font-size: 25px;
   padding: 15px;
@@ -80,7 +81,9 @@ body {
 
 .fab-danger {
   bottom: 25px;
+  cursor: pointer;
   padding: 10px;
   position: fixed;
   left: 25px;
+  z-index: 100;
 }

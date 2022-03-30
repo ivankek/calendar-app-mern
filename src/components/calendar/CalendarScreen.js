@@ -49,7 +49,7 @@ export const CalendarScreen = () => {
 
   useEffect(() => {
     dispatch(eventStartLoading());
-  }, [dispatch]);
+  }, [dispatch, events]);
 
   const onDoubleClick = (e) => {
     dispatch(uiOpenModal());

@@ -8,6 +8,7 @@ import { uiCloseModal } from "../../actions/ui";
 import {
   eventClearActiveEvent,
   eventStartAddNew,
+  eventStartUpdate,
   eventUpdated,
 } from "../../actions/events";
 
@@ -106,7 +107,7 @@ export const CalendarModal = () => {
     }
 
     if (activeEvent) {
-      dispatch(eventUpdated(formValues));
+      dispatch(eventStartUpdate(formValues));
     } else {
       dispatch(eventStartAddNew(formValues));
     }
@@ -130,7 +131,7 @@ export const CalendarModal = () => {
           <label>Fecha y hora inicio</label>
           <DateTimePicker
             onChange={handleStartDateChange}
-            value={dateStart}
+            value={activeEvent ? activeEvent.start : dateStart}
             className="form-control mt-2"
           />
         </div>
@@ -140,7 +141,7 @@ export const CalendarModal = () => {
           <DateTimePicker
             onChange={handleEndDateChange}
             minDate={dateStart}
-            value={dateEnd}
+            value={activeEvent ? activeEvent.end : dateEnd}
             className="form-control mt-2"
           />
         </div>
