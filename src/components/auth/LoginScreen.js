@@ -9,17 +9,17 @@ export const LoginScreen = () => {
   const dispatch = useDispatch();
 
   const [formLoginValues, handleLoginInputChange] = useForm({
-    lEmail: "ivan.kek11@hotmail.com",
-    lPassword: "123456",
+    lEmail: "",
+    lPassword: "",
   });
 
   const { lEmail, lPassword } = formLoginValues;
 
   const [formRegisterValues, handleRegisterInputChange] = useForm({
-    rName: "Ivan Kek",
-    rEmail: "ivan.kek@gmail.com",
-    rPassword: "123456",
-    rPassword2: "123456",
+    rName: "",
+    rEmail: "",
+    rPassword: "",
+    rPassword2: "",
   });
 
   const { rName, rEmail, rPassword, rPassword2 } = formRegisterValues;
@@ -113,7 +113,7 @@ export const LoginScreen = () => {
               <input
                 type="password"
                 className="form-control"
-                placeholder="Repita la contraseña"
+                placeholder="Confirmar contraseña"
                 name="rPassword2"
                 value={rPassword2}
                 onChange={handleRegisterInputChange}
